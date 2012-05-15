@@ -543,3 +543,14 @@ def any_model_default(model_cls, **kwargs):
             if not attempts:
                 raise
 
+
+try:
+    import django_extensions.db.fields
+except ImportError:
+    pass
+else:
+    import uuid
+
+    @any_field.register(django_extensions.db.fields.UUIDField)
+    def any_uuid_field(field, **kwargs):
+        return uuid.uuid4()
