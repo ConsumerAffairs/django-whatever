@@ -81,7 +81,7 @@ class Client(DjangoClient):
                 form_data['MAX_NUM_FORMS'] = 0
             else:
                 #TODO support form instance
-                form_data, form_files = any_form(form.__class__, **kwargs)
+                form_data, form_files = any_form(form.__class__)
 
             if form.prefix:
                 form_data = dict([('%s-%s' % (form.prefix, key), value)
@@ -92,7 +92,7 @@ class Client(DjangoClient):
         if extra:
             post_data.update(extra)
 
-        return self.post(url, post_data)
+        return self.post(url, post_data, **kwargs)
 
 
 def without_random_seed(func):
