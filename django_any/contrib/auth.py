@@ -32,6 +32,7 @@ def any_user(password=None, permissions=[], groups=[], **kwargs):
 
     if password:
         user.set_password(password)
+        user._password = password
     
     user.save()
     return user

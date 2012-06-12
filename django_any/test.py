@@ -44,6 +44,8 @@ class Client(DjangoClient):
         password = xunit.any_string()
         if 'user' in kwargs:
             user = kwargs['user']
+            if getattr(user, '_password', False) != False:
+                password = user._password
             try:
                 user.set_password(password)
                 user.save()
