@@ -247,7 +247,7 @@ def any_file_field(field, **kwargs):
                 return result
 
     if callable(field.upload_to):
-        generated_filepath = field.upload_to(None, xunit.any_string(ascii_letters, 10, 20))
+        generated_filepath = field.upload_to(field.model, xunit.any_string(ascii_letters, 10, 20))
         upload_to = os.path.dirname(generated_filepath)
     else:
         upload_to = field.upload_to
