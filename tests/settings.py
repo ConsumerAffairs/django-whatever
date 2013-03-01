@@ -21,6 +21,8 @@ TEMPLATE_LOADERS = (
 ROOT_URLCONF = 'tests.test_runner'
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 
+SECRET_KEY = 'keepitsecretkeepitsafe'
+
 if __name__ == "__main__":
     import sys, test_runner as settings
     from django.core.management import execute_manager
